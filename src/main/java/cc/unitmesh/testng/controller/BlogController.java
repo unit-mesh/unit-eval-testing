@@ -30,4 +30,10 @@ public class BlogController {
         BeanUtils.copyProperties(createdBlog, response);
         return createdBlog;
     }
+
+    // delete blog
+    @DeleteMapping("/{id}")
+    public void deleteBlog(@PathVariable Long id) {
+        blogService.deleteBlog(id);
+    }
 }
