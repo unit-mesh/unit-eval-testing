@@ -36,4 +36,22 @@ public class BlogController {
     public void deleteBlog(@PathVariable Long id) {
         blogService.deleteBlog(id);
     }
+
+    // update blog
+    @PutMapping("/{id}")
+    public BlogPost updateBlog(@PathVariable Long id, @RequestBody CreateBlogRequest request) {
+        CreateBlogResponse response = new CreateBlogResponse();
+
+        // check if blog exists
+        BlogPost blogPost = blogService.getBlogById(id);
+        if (blogPost == null) {
+            return null;
+        }
+
+        // update blog
+        BeanUtils.copyProperties(request, blogPost);
+        BlogPost updatedBlog = blogService.updateBlog(id, blogPost);
+        BeanUtils.copyProperties(updatedBlog, response);
+        return updatedBlog;
+    }
 }
