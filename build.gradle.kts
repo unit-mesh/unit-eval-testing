@@ -24,6 +24,11 @@ dependencies {
 	implementation("org.springframework.modulith:spring-modulith-starter-jpa")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
+
+	// lombok
+	compileOnly("org.projectlombok:lombok")
+	// javax.persistence
+	implementation("jakarta.persistence:jakarta.persistence-api:2.2.3")
 }
 
 dependencyManagement {
